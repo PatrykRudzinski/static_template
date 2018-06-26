@@ -28,6 +28,7 @@ gulp.task('browser-sync', function() {
 
 gulp.task('sass', function () {
     return gulp.src('./scss/main.scss')
+        .pipe(sass({outputStyle: 'compressed'}))
         .pipe(gulp.dest('./css'))
         .pipe(browserSync.stream());
 });
