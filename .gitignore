@@ -1,4 +1,5 @@
 node_modules
 .idea
 .sass-cache
+package-lock.json
 Thumbs.db
