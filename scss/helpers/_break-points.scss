@@ -1,1 +1,8 @@
 //hamburger
+@mixin res400 {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+//@include res400 {}
