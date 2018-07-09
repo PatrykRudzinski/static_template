@@ -1,5 +1,4 @@
-//hamburger
-@mixin res400 {
+@mixin max400 {
   @media (max-width: 400px) {
     @content;
   }

@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function (){
         nav.classList.toggle('nav__list--collapsed');
     };
 
-
-
     // collapse and show menu on hamburger click
     hamburger.addEventListener('click', menuSwitch);
 
@@ -19,4 +17,6 @@ document.addEventListener('DOMContentLoaded', function (){
     [...menuLink].forEach(function (el){
         el.addEventListener('click', menuSwitch)
     });
+
+
 });
