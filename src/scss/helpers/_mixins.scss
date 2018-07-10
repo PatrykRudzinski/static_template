@@ -1,0 +1,116 @@
+/*==================================   Z-INDEX  ============================================*/
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z($key) {
+  z-index: z-index($key);
+}
+
+//.navigation {
+////  @include z(nav);
+////}
+
+/*===============================   PSEUDOELEMENTS  ========================================*/
+
+@mixin ps($display: block, $pos: absolute, $content: ''){
+  display: $display;
+  position: $pos;
+  content: $content;
+}
+
+//section:after {
+//  @include ps;
+//}
+
+/*===================================   FONTS  ============================================*/
+
+@mixin font-source-sans($size: false, $colour: false, $weight: false,  $line: false) {
+  @if $size { font-size: $size; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $line { line-height: $line; }
+}
+
+//p {
+//  @include font(1rem, white, 700)
+//}
+
+/*===================================   ARROW   =============================================*/
+
+@mixin arrow($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  @if ($direction == left) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == right) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+  @else if ($direction == down) {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+  }
+  @else {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  }
+}
+
+//div {
+//  @include arrow(left, 30px, #000);
+//}
+
+
+/*=====================================   HIDE TEXT   ===========================================*/
+
+@mixin hidetxt() {
+  font: 0/0 a !important;
+  text-shadow: none !important;
+  color: transparent !important;
+  border: 0 !important;
+  background-color: transparent !important;
+  display: block;
+  background-repeat: no-repeat;
+
+  br { display: none; }
+}
+
+/*=====================================   RWD IMAGES   ==========================================*/
+
+//-------------------------------------
+// responsive images in bg
+// parent must have width: $image-width
+//-------------------------------------
+@mixin responsive-bg-image($image-width, $image-height) {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  max-width: $image-width;
+  height: 0;
+  padding-bottom: percentage($image-height / $image-width);
+  display: block;
+}
+
+//-------------------------------------
+// responsive image as :before of element
+// this version not require parent element
+//-------------------------------------
+@mixin responsive-bg-image-before($image-width, $image-height, $imageUrl) {
+  max-width: $image-width;
+
+  &:before {
+    background: url($imageUrl);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-bottom: percentage($image-height / $image-width);
+    width: 100%;
+    content: '';
+    display: block;
+  }
+}

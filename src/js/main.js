@@ -20,8 +20,4 @@ document.addEventListener('DOMContentLoaded', function (){
 
 
 });
-function add(x,y) {
-    return x + y;
-}
-
 //# sourceMappingURL=main.js.map

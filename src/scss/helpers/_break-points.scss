@@ -1,7 +1,14 @@
-@mixin max400 {
-  @media (max-width: 400px) {
-    @content;
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
   }
 }
-
-//@include res400 {}
+//@include mq(phone, max) {
+//  padding: 1.2rem;
+//}
