@@ -72,7 +72,7 @@ gulp.task('js_build', function () {
 gulp.task('watch', function(){
     gulp.watch('./src/scss/**/*.scss', ['sass']);
     gulp.watch('./src/**/*.html', browserSync.reload);
-    gulp.watch(['./js/**/*.js', '!./js/main.js'], ['js']);
+    gulp.watch(['./src/js/**/*.js', '!./src/js/main.js'], ['js']);
 });
 
 

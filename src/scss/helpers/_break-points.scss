@@ -1,4 +1,4 @@
-@mixin mq($width, $type: min) {
+@mixin mq($width, $type: max) {
   @if map_has_key($breakpoints, $width) {
     $width: map_get($breakpoints, $width);
     @if $type == max {
@@ -9,6 +9,6 @@
     }
   }
 }
-//@include mq(phone, max) {
+//@include mq(phone, min) {
 //  padding: 1.2rem;
 //}

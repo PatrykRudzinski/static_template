@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'normalize';
 @import 'global';
-@import "mixins";
+@import '_mixins';
 @import 'break-points';
 @import 'ui';
+@import 'print';
