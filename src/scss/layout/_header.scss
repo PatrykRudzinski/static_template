@@ -23,7 +23,7 @@
 
 }
     
-.nav__list--collapsed {
+.js-nav__list--collapsed {
     @include mq('burger'){
         opacity: 0;
         z-index: -1;
@@ -73,7 +73,7 @@
     }
 }
 
-.nav__hamburger--open {
+.js-nav__hamburger--open {
 
     span {
         transform: scale(0);

@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function (){
 
      // collapse and show menu func
     const menuSwitch = () => {
-        hamburger.classList.toggle('nav__hamburger--open');
-        nav.classList.toggle('nav__list--collapsed');
+        hamburger.classList.toggle('js-nav__hamburger--open');
+        nav.classList.toggle('js-nav__list--collapsed');
     };
 
     // viewport watcher and add hash
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
     // close menu on link click
     [...menuLink].forEach( el => {
-        el.addEventListener('click', menuSwitch)
+        el.addEventListener('click', menuSwitch);
     });
 
     // smooth scroll

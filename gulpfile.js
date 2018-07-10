@@ -12,6 +12,7 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const htmlmin = require('gulp-htmlmin');
 const minify = require('gulp-minify');
+const uncss = require('gulp-uncss');
 
 
 //---------------------------------------------------------------------------------- HTML
@@ -31,7 +32,7 @@ gulp.task('sass', function() {
         .pipe(wait(100))
         .pipe(plumber({errorHandler : showError}))
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(sass({outputStyle: 'expanded'}))
         .pipe(autoprefixer({browsers: ['last 2 versions']}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./src/css'))
@@ -39,9 +40,15 @@ gulp.task('sass', function() {
 });
 
 gulp.task('css_build', function() {
-    return gulp.src('./src/css/**/*.css')
+    gulp.src('./src/css/main.css')
+        .pipe(sass({outputStyle: 'compressed'}))
+        .pipe(autoprefixer({browsers: ['last 3 versions']}))
+        .pipe(uncss({
+            ignore: [/js/],
+            html: ['./src/**/*.html']
+        }))
         .pipe(gulp.dest('./build/css/'))
-})
+});
 
 
 //---------------------------------------------------------------------------------- Js
@@ -55,7 +62,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('js_build', function () {
-    return gulp.src('./src/js/**/*.js')
+    return gulp.src(['./src/js/**/*.js', '!./src/js/main.js'])
         .pipe(babel({presets: ['env']}))
         .pipe(concat('main.js'))
         .pipe(minify({
@@ -105,5 +112,5 @@ gulp.task('default', function () {
 });
 
 gulp.task('build', function () {
-    gulp.start(['html_build','css_build', 'js_build']);
+    gulp.start(['html_build', 'js_build', 'css_build']);
 });
