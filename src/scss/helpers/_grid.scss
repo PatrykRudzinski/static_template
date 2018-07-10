@@ -1,0 +1,33 @@
+.container {
+  max-width: $containerWidth;
+  margin: 0 auto;
+}
+
+@for $i from 2 through 12 {
+  .row#{$i} {
+    display: flex;
+    flex: 1 1 100%;
+
+    @for $j from 1 through $i {
+
+      $width : $j / $i * 100%;
+      .col#{$j} {
+        flex: 0 0 #{$width};
+      }
+    }
+  }
+}
+
+
+.row10 {
+  padding-top: $headerHeight;
+}
+.row10 div {
+  background-color: #444;
+  border: 1px solid #fe3;
+}
+
+.test {
+  height: 10px;
+  background-color: red;
+}
