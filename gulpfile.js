@@ -13,6 +13,7 @@ const concat = require('gulp-concat');
 const htmlmin = require('gulp-htmlmin');
 const minify = require('gulp-minify');
 const uncss = require('gulp-uncss');
+const image = require('gulp-image');
 
 
 //---------------------------------------------------------------------------------- HTML
@@ -74,6 +75,19 @@ gulp.task('js_build', function () {
         .pipe(gulp.dest('./build/js'))
 });
 
+//---------------------------------------------------------------------------------- Images
+
+// gulp.task('image', function () {
+//     gulp.src('./src/img/**/*')
+//         .pipe(image())
+//         .pipe(gulp.dest('./build/img/'));
+// });
+
+gulp.task('move', function () {
+    gulp.src('./src/assets/**/*')
+        .pipe(gulp.dest('./build/assets/'));
+});
+
 
 //---------------------------------------------------------------------------------- Watch
 gulp.task('watch', function(){
@@ -112,5 +126,5 @@ gulp.task('default', function () {
 });
 
 gulp.task('build', function () {
-    gulp.start(['html_build', 'js_build', 'css_build']);
+    gulp.start(['html_build', 'js_build', 'css_build', 'move']);
 });
