@@ -52,36 +52,7 @@ gulp.task('css_build', function() {
 });
 
 
-//---------------------------------------------------------------------------------- Js
-gulp.task('js', function () {
-    return gulp.src(['./src/js/**/*.js', '!./src/js/main.js'])
-        .pipe(sourcemaps.init())
-        .pipe(concat('main.js'))
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./src/js'))
-        .pipe(browserSync.reload({stream: true}))
-});
-
-gulp.task('js_build', function () {
-    return gulp.src(['./src/js/**/*.js', '!./src/js/main.js'])
-        .pipe(babel({presets: ['env']}))
-        .pipe(concat('main.js'))
-        .pipe(minify({
-            ext: {
-                min: '.js'
-            },
-            noSource: true
-        }))
-        .pipe(gulp.dest('./build/js'))
-});
-
 //---------------------------------------------------------------------------------- Images
-
-// gulp.task('image', function () {
-//     gulp.src('./src/img/**/*')
-//         .pipe(image())
-//         .pipe(gulp.dest('./build/img/'));
-// });
 
 gulp.task('move', function () {
     gulp.src('./src/assets/**/*')
